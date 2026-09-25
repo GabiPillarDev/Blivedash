@@ -3,391 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blive — Dashboard de Tráfego Pago</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Blive — Resumo Semanal</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-  :root {
-    --primary: #8B5CF6;
-    --primary-light: #A78BFA;
-    --secondary: #6D28D9;
-    --bg: #0F0E17;
-    --surface: #1A1826;
-    --surface2: #242136;
-    --border: #322D47;
-    --text: #E9E7F5;
-    --text2: #A29DBF;
-    --text3: #6E6890;
-    --green: #22C55E;
-    --red: #EF4444;
-    --yellow: #F59E0B;
-    --blue: #3B82F6;
-    --pink: #EC4899;
+  :root{
+    --primary:#7C3AED;
+    --secondary:#A78BFA;
+    --bg:#14101F;
+    --surface:#1E1832;
+    --surface2:#28213F;
+    --border:#372E52;
+    --text:#EDE9F7;
+    --text2:#A79FC4;
+    --text3:#786F97;
+    --green:#22C55E;
+    --red:#EF4444;
+    --amber:#F59E0B;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
+  .topbar{
+    position:sticky;top:0;z-index:50;background:rgba(20,16,31,0.9);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);padding:14px 24px;
+    display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--text2);
   }
-  .topbar {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(15,14,23,0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 32px;
-    display: flex; align-items: center; justify-content: space-between;
+  .topbar strong{color:var(--text);}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+  header.hero{padding:48px 0 32px;}
+  header.hero h1{font-size:30px;font-weight:800;margin:0 0 6px;}
+  header.hero p{color:var(--text2);font-size:15px;margin:0;}
+  section{margin:40px 0;}
+  h2.section-title{font-size:18px;font-weight:700;margin:0 0 18px;}
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:900px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+  .kpi-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;}
+  .kpi-card .label{font-size:12px;color:var(--text2);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
+  .kpi-card .value{font-size:26px;font-weight:800;}
+  .kpi-card .sub{font-size:12px;color:var(--text3);margin-top:6px;}
+  .channel-tag{
+    display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;
+    background:rgba(124,58,237,.18);color:var(--secondary);margin-bottom:14px;
   }
-  .topbar-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
-  .topbar-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); }
-  .topbar-sub { font-size: 12px; color: var(--text3); }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
-  header.hero { padding: 48px 0 32px; border-bottom: 1px solid var(--border); }
-  .eyebrow { color: var(--primary-light); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
-  h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
-  .hero-meta { color: var(--text2); font-size: 14px; }
-  section { padding: 40px 0; border-bottom: 1px solid var(--border); }
-  section:last-of-type { border-bottom: none; }
-  h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-  .section-sub { color: var(--text2); font-size: 13px; margin-bottom: 24px; }
-  .badge-channel {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 20px; margin-bottom: 12px;
-  }
-  .badge-meta { background: rgba(59,130,246,0.15); color: var(--blue); }
-  .badge-google { background: rgba(34,197,94,0.15); color: var(--green); }
-
-  .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .kpi-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-    padding: 24px; opacity: 0; transform: translateY(10px);
-    animation: fadeUp 0.5s ease forwards;
-  }
-  .kpi-label { font-size: 12px; color: var(--text2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 10px; }
-  .kpi-value { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
-  .kpi-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; margin-top: 10px; padding: 3px 8px; border-radius: 6px; }
-  .badge-up { background: rgba(34,197,94,0.15); color: var(--green); }
-  .badge-down { background: rgba(239,68,68,0.15); color: var(--red); }
-  .badge-neutral { background: rgba(162,157,191,0.15); color: var(--text2); }
-  .kpi-note { font-size: 12px; color: var(--text3); margin-top: 6px; }
-
-  .campaign-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
-  .campaign-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
-  .campaign-name { font-size: 14px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-  .campaign-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .campaign-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px dashed var(--border); }
-  .campaign-row:last-child { border-bottom: none; }
-  .campaign-row .val { font-weight: 700; }
-  .campaign-tag { font-size: 11px; color: var(--text3); margin-top: 10px; }
-
-  .chart-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; }
-  .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
-  .chart-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-  .chart-sub { font-size: 12px; color: var(--text3); margin-bottom: 16px; }
-  .chart-box { position: relative; height: 260px; }
-
-  .keyword-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-top: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  .keyword-pill { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 13px; }
-  .keyword-pill b { color: var(--primary-light); }
-
-  .accordion-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
-  .accordion-header { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 12px; }
-  .accordion-title { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; }
-  .status-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
-  .status-positivo { background: rgba(34,197,94,0.15); color: var(--green); }
-  .status-atencao { background: rgba(239,68,68,0.15); color: var(--red); }
-  .status-oportunidade { background: rgba(245,158,11,0.15); color: var(--yellow); }
-  .status-padrao { background: rgba(59,130,246,0.15); color: var(--blue); }
-  .chevron { transition: transform 0.2s ease; color: var(--text3); font-size: 12px; }
-  .accordion-item.open .chevron { transform: rotate(180deg); }
-  .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
-  .accordion-item.open .accordion-body { max-height: 200px; }
-  .accordion-body-inner { padding: 0 20px 18px; font-size: 13px; color: var(--text2); }
-  .accordion-body-inner b { color: var(--text); }
-
-  .rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .rec-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; display: flex; gap: 14px; }
-  .rec-num { width: 28px; height: 28px; border-radius: 8px; background: var(--surface2); color: var(--primary-light); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .rec-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-  .rec-text { font-size: 13px; color: var(--text2); }
-
-  footer { padding: 28px 0 48px; text-align: center; color: var(--text3); font-size: 12px; }
-
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-
-  @media (max-width: 860px) {
-    .wrap { padding: 0 18px; }
-    .kpi-grid, .campaign-grid, .rec-grid { grid-template-columns: 1fr; }
-    .chart-grid { grid-template-columns: 1fr; }
-    h1 { font-size: 24px; }
-  }
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{text-align:left;color:var(--text2);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--border);font-size:12px;text-transform:uppercase;letter-spacing:.03em;}
+  td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;}
+  .badge.good{background:rgba(34,197,94,.15);color:var(--green);}
+  .badge.bad{background:rgba(239,68,68,.15);color:var(--red);}
+  .badge.warn{background:rgba(245,158,11,.15);color:var(--amber);}
+  .note{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:14px 16px;font-size:13px;color:var(--amber);margin-top:16px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:900px){.grid-2{grid-template-columns:1fr;}}
+  footer{text-align:center;padding:40px 0;color:var(--text3);font-size:12px;border-top:1px solid var(--border);margin-top:20px;}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="topbar-brand"><span class="topbar-dot"></span>Blive</div>
-  <div class="topbar-sub">gerado com Gabriela · gestão de tráfego</div>
+  <span><strong>Blive</strong> · Tráfego Pago</span>
+  <span>gerado por Gabriela</span>
 </div>
 
 <div class="wrap">
   <header class="hero">
-    <div class="eyebrow">Relatório de performance</div>
-    <h1>Blive — Tráfego Pago</h1>
-    <div class="hero-meta">Setembro 2026 (mês em andamento) · comparativo com Agosto 2026 (fechado) · Meta Ads e Google Ads</div>
+    <h1>Resumo Semanal</h1>
+    <p>Últimos 7 dias · Meta Ads e Google Ads</p>
   </header>
 
-  <section id="resumo">
-    <h2>Resumo do mês</h2>
-    <div class="section-sub">Visão consolidada de Meta Ads e Google Ads, dados parciais de setembro</div>
+  <section>
+    <h2 class="section-title">Meta Ads — últimos 7 dias</h2>
     <div class="kpi-grid">
-      <div class="kpi-card" style="animation-delay:0.05s">
-        <div class="kpi-label">Investimento Meta</div>
-        <div class="kpi-value" data-count="672.66" data-prefix="R$ ">R$ 0</div>
-        <span class="kpi-badge badge-neutral">3 campanhas ativas</span>
+      <div class="kpi-card"><div class="label">Investimento</div><div class="value">R$ 266,45</div></div>
+      <div class="kpi-card"><div class="label">Leads</div><div class="value">22</div></div>
+      <div class="kpi-card"><div class="label">Custo por lead</div><div class="value">R$ 12,11</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Google Ads — últimos 7 dias</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="label">Investimento</div><div class="value">R$ 152</div></div>
+      <div class="kpi-card"><div class="label">Conversões</div><div class="value">34</div><div class="sub">a confirmar</div></div>
+      <div class="kpi-card"><div class="label">Custo por conversão</div><div class="value">R$ 4,48</div></div>
+    </div>
+    <div class="note">
+      ⚠ Ponto de atenção: precisa confirmar se as 34 conversões registradas estão corretas antes de reportar ao cliente.
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Visão do mês completo</h2>
+    <div class="grid-2">
+      <div class="card">
+        <span class="channel-tag">Google Ads</span>
+        <table>
+          <tr><td>Investido no mês</td><td>R$ 700</td></tr>
+          <tr><td>Status do saldo</td><td><span class="badge warn">esgotado</span></td></tr>
+        </table>
+        <div class="note">
+          ⚠ Saldo do Google esgotado. Reposição prevista para a virada do mês, na segunda-feira.
+        </div>
       </div>
-      <div class="kpi-card" style="animation-delay:0.1s">
-        <div class="kpi-label">Leads Meta (total)</div>
-        <div class="kpi-value" data-count="80">0</div>
-        <span class="kpi-badge badge-neutral">Guia + Ingresso + Paris</span>
-      </div>
-      <div class="kpi-card" style="animation-delay:0.15s">
-        <div class="kpi-label">CPL médio Meta</div>
-        <div class="kpi-value" data-count="8.41" data-prefix="R$ ">R$ 0</div>
-        <span class="kpi-badge badge-up">↓ vs R$15,03 (Guia, ago)</span>
-      </div>
-      <div class="kpi-card" style="animation-delay:0.2s">
-        <div class="kpi-label">Investimento Google</div>
-        <div class="kpi-value" data-count="536" data-prefix="R$ ">R$ 0</div>
-        <span class="kpi-badge badge-neutral">busca · Disney</span>
-      </div>
-      <div class="kpi-card" style="animation-delay:0.25s">
-        <div class="kpi-label">Conversões Google</div>
-        <div class="kpi-value" data-count="48">0</div>
-        <div class="kpi-note">contagem pode variar (atribuição do Google)</div>
-      </div>
-      <div class="kpi-card" style="animation-delay:0.3s">
-        <div class="kpi-label">Custo por conversão Google</div>
-        <div class="kpi-value" data-count="11.16" data-prefix="R$ ">R$ 0</div>
-        <span class="kpi-badge badge-neutral">palavras ultra específicas</span>
+      <div class="card">
+        <span class="channel-tag">Meta Ads</span>
+        <table>
+          <tr><td>Investido no mês</td><td>R$ 975,38</td></tr>
+        </table>
       </div>
     </div>
   </section>
 
-  <section id="meta">
-    <span class="badge-channel badge-meta">Meta Ads</span>
-    <h2>Campanhas ativas</h2>
-    <div class="section-sub">Estratégia atual: 100% do foco em leads da campanha Guia</div>
-
-    <div class="campaign-grid">
-      <div class="campaign-card">
-        <div class="campaign-name"><span class="campaign-dot" style="background:var(--primary)"></span>Guia</div>
-        <div class="campaign-row"><span>Investimento</span><span class="val">R$ 608,00</span></div>
-        <div class="campaign-row"><span>Leads</span><span class="val">59</span></div>
-        <div class="campaign-row"><span>CPL</span><span class="val">R$ 10,31</span></div>
-        <div class="campaign-tag">Criativo em destaque: Thalita</div>
-      </div>
-      <div class="campaign-card">
-        <div class="campaign-name"><span class="campaign-dot" style="background:var(--blue)"></span>Ingresso</div>
-        <div class="campaign-row"><span>Investimento</span><span class="val">R$ 33,19</span></div>
-        <div class="campaign-row"><span>Leads</span><span class="val">10</span></div>
-        <div class="campaign-row"><span>CPL</span><span class="val">R$ 3,32</span></div>
-        <div class="campaign-tag">Verba anterior ao feedback do cliente</div>
-      </div>
-      <div class="campaign-card">
-        <div class="campaign-name"><span class="campaign-dot" style="background:var(--pink)"></span>Paris</div>
-        <div class="campaign-row"><span>Investimento</span><span class="val">R$ 31,47</span></div>
-        <div class="campaign-row"><span>Leads</span><span class="val">11</span></div>
-        <div class="campaign-row"><span>CPL</span><span class="val">R$ 2,86</span></div>
-        <div class="campaign-tag">Volume baixo, CPL mais baixo do mês</div>
-      </div>
-    </div>
-
-    <div class="chart-grid">
-      <div class="chart-card">
-        <div class="chart-title">Guia: setembro (parcial) vs agosto (fechado)</div>
-        <div class="chart-sub">Investimento, leads e CPL</div>
-        <div class="chart-box"><canvas id="chartComparativo"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">Distribuição de investimento</div>
-        <div class="chart-sub">Por campanha, setembro</div>
-        <div class="chart-box"><canvas id="chartDistribuicao"></canvas></div>
+  <section>
+    <h2 class="section-title">Pontos de atenção</h2>
+    <div class="card">
+      <div class="note" style="margin-top:0;">
+        ⚠ Sem acesso aos dados de vendas do cliente. O dashboard mostra apenas leads (Meta) e conversões (Google). Vale cobrar da Blive o acesso à plataforma de vendas para fechar o funil completo.
       </div>
     </div>
   </section>
 
-  <section id="google">
-    <span class="badge-channel badge-google">Google Ads</span>
-    <h2>Busca</h2>
-    <div class="section-sub">Próximo passo do plano: remarketing com visitantes do site</div>
-    <div class="keyword-box">
-      <div class="keyword-pill">Palavra-chave foco: <b>agência de viagem para Disney</b></div>
-      <div class="keyword-pill">Correspondência: <b>frase e exata</b></div>
-      <div class="keyword-pill">Custo por conversão: <b>R$ 11,16</b></div>
-    </div>
-  </section>
-
-  <section id="insights">
-    <h2>Insights estratégicos</h2>
-    <div class="section-sub">Leitura cruzada dos dados do mês</div>
-
-    <div class="accordion-item open">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="accordion-title"><span class="status-badge status-positivo">Positivo</span>CPL da campanha Guia caiu 31% frente a agosto</div>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="accordion-body"><div class="accordion-body-inner">O CPL foi de <b>R$15,03</b> em agosto para <b>R$10,31</b> em setembro (parcial). Mesmo com investimento proporcionalmente menor até o momento, a qualidade da campanha melhorou.</div></div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="accordion-title"><span class="status-badge status-padrao">Padrão</span>Concentrar verba em uma campanha melhora o leilão</div>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="accordion-body"><div class="accordion-body-inner">Ao focar 100% do orçamento na campanha Guia, foi possível comprar mais leilões de forma consistente, o que historicamente melhora a qualidade e reduz o CPL ao longo do tempo.</div></div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="accordion-title"><span class="status-badge status-oportunidade">Oportunidade</span>Criativo da Thalita é o destaque do mês</div>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="accordion-body"><div class="accordion-body-inner">É o criativo que mais traz leads na campanha Guia. Testar variações desse mesmo ângulo tende a sustentar o resultado e evitar fadiga criativa.</div></div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="accordion-title"><span class="status-badge status-padrao">Padrão</span>Ingresso e Paris têm CPL mais baixo, mas pouco volume</div>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="accordion-body"><div class="accordion-body-inner">CPL de R$3,32 (Ingresso) e R$2,86 (Paris) são os menores do mês, porém com investimento reduzido (R$33,19 e R$31,47). Vale avaliar se compensa realocar parte da verba.</div></div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="accordion-title"><span class="status-badge status-oportunidade">Oportunidade</span>Remarketing no Google ainda não foi ativado</div>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="accordion-body"><div class="accordion-body-inner">A estratégia de Google está validada. O próximo passo planejado é remarketing com quem já visitou o site, público com maior propensão a converter.</div></div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="accordion-title"><span class="status-badge status-atencao">Atenção</span>Conversões do Google podem ter variação na contagem</div>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="accordion-body"><div class="accordion-body-inner">As 48 conversões registradas podem sofrer ajuste para mais ou para menos, por características do próprio sistema de atribuição do Google. Vale cruzar com dados reais de CRM quando possível.</div></div>
-    </div>
-  </section>
-
-  <section id="recomendacoes">
-    <h2>Recomendações</h2>
-    <div class="section-sub">Próximos passos priorizados</div>
-    <div class="rec-grid">
-      <div class="rec-card">
-        <div class="rec-num">1</div>
-        <div><div class="rec-title">Escalar a verba da campanha Guia</div><div class="rec-text">O CPL caiu mesmo com investimento parcial. Há espaço para aumentar o orçamento mantendo a qualidade do leilão.</div></div>
-      </div>
-      <div class="rec-card">
-        <div class="rec-num">2</div>
-        <div><div class="rec-title">Criar variações do criativo da Thalita</div><div class="rec-text">É o principal gerador de leads do mês. Testar novos ângulos evita fadiga criativa e sustenta o CPL.</div></div>
-      </div>
-      <div class="rec-card">
-        <div class="rec-num">3</div>
-        <div><div class="rec-title">Ativar o remarketing no Google</div><div class="rec-text">Público de visitantes do site já está mapeado. É o próximo passo natural do plano de ação.</div></div>
-      </div>
-      <div class="rec-card">
-        <div class="rec-num">4</div>
-        <div><div class="rec-title">Reavaliar verba de Ingresso e Paris</div><div class="rec-text">CPL mais baixo do mês, mas volume pequeno. Testar aumento controlado de investimento para medir escala.</div></div>
-      </div>
-      <div class="rec-card">
-        <div class="rec-num">5</div>
-        <div><div class="rec-title">Cruzar conversões do Google com dados reais</div><div class="rec-text">Validar as 48 conversões registradas com CRM ou vendas, já que a contagem pode variar.</div></div>
-      </div>
-      <div class="rec-card">
-        <div class="rec-num">6</div>
-        <div><div class="rec-title">Fechar o comparativo completo no fim do mês</div><div class="rec-text">Os dados de setembro ainda são parciais. Vale revisar CPL, leads e investimento com o mês fechado para confirmar a tendência.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <footer>Relatório gerado por Gabriela · gestão de tráfego pago</footer>
+  <footer>Resumo gerado a partir dos dados de tráfego pago da semana · Blive</footer>
 </div>
-
-<script>
-  function toggleAcc(header) {
-    const item = header.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
-  }
-
-  function animateCounters() {
-    document.querySelectorAll('[data-count]').forEach(el => {
-      const target = parseFloat(el.getAttribute('data-count'));
-      const prefix = el.getAttribute('data-prefix') || '';
-      const isDecimal = target % 1 !== 0;
-      let current = 0;
-      const duration = 900;
-      const start = performance.now();
-      function step(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        current = target * eased;
-        el.textContent = prefix + (isDecimal ? current.toFixed(2).replace('.', ',') : Math.round(current).toLocaleString('pt-BR'));
-        if (progress < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    });
-  }
-  animateCounters();
-
-  const purple = '#8B5CF6';
-  const blue = '#3B82F6';
-  const pink = '#EC4899';
-  const text2 = '#A29DBF';
-  const border = '#322D47';
-
-  Chart.defaults.font.family = 'Inter';
-  Chart.defaults.color = text2;
-
-  new Chart(document.getElementById('chartComparativo'), {
-    type: 'bar',
-    data: {
-      labels: ['Investimento (R$)', 'Leads', 'CPL (R$)'],
-      datasets: [
-        { label: 'Agosto (fechado)', data: [1217.63, 81, 15.03], backgroundColor: 'rgba(162,157,191,0.35)', borderRadius: 6, maxBarThickness: 36 },
-        { label: 'Setembro (parcial)', data: [608, 59, 10.31], backgroundColor: purple, borderRadius: 6, maxBarThickness: 36 }
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 16, font: { size: 11 } } } },
-      scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 11 } } },
-        y: { grid: { color: border }, ticks: { font: { size: 11 } } }
-      }
-    }
-  });
-
-  new Chart(document.getElementById('chartDistribuicao'), {
-    type: 'doughnut',
-    data: {
-      labels: ['Guia', 'Ingresso', 'Paris'],
-      datasets: [{ data: [608, 33.19, 31.47], backgroundColor: [purple, blue, pink], borderColor: '#1A1826', borderWidth: 3 }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false, cutout: '68%',
-      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 16, font: { size: 11 } } } }
-    }
-  });
-</script>
 
 </body>
 </html>
