@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blive · Setembro 2026</title>
+<title>Blive · Últimos 7 dias</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
@@ -11,7 +11,7 @@
   --bg:#f6f4fa; --surface:#ffffff; --ink:#1e1530; --muted:#6b6280; --line:#e4dfee;
   --brand:#5b2a9e; --brand-deep:#2e1259; --brand-soft:#ece4f8; --brand-2:#a57be0;
   --on-brand:#ffffff; --on-brand-muted:#d6c6f2;
-  --warn:#b45309; --warn-soft:#fdf0e1; --crit:#b42318; --crit-soft:#fde8e6; --ok:#157f4a; --ok-soft:#e3f5ea;
+  --ok:#157f4a; --ok-soft:#e3f5ea;
   --display:"Bricolage Grotesque", "Manrope", system-ui, sans-serif;
   --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -19,13 +19,13 @@
   --bg:#130d1f; --surface:#1d1530; --ink:#efeaf8; --muted:#a69cbd; --line:#30264a;
   --brand:#3d1a73; --brand-deep:#28104d; --brand-soft:#2c2048; --brand-2:#b892ee;
   --on-brand:#ffffff; --on-brand-muted:#cbb8ee;
-  --warn:#f5b462; --warn-soft:#3a2a14; --crit:#f8877c; --crit-soft:#3d1a18; --ok:#6fd49c; --ok-soft:#17321f;
+  --ok:#6fd49c; --ok-soft:#17321f;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#130d1f; --surface:#1d1530; --ink:#efeaf8; --muted:#a69cbd; --line:#30264a;
   --brand:#3d1a73; --brand-deep:#28104d; --brand-soft:#2c2048; --brand-2:#b892ee;
   --on-brand:#ffffff; --on-brand-muted:#cbb8ee;
-  --warn:#f5b462; --warn-soft:#3a2a14; --crit:#f8877c; --crit-soft:#3d1a18; --ok:#6fd49c; --ok-soft:#17321f;
+  --ok:#6fd49c; --ok-soft:#17321f;
   color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
@@ -49,163 +49,109 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 .split-bar span:last-child{background:var(--brand-2)}
 .split-legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--on-brand-muted)}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
-.channels{display:grid;grid-template-columns:1.45fr 1fr;gap:20px;align-items:start}
+.channels{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px clamp(18px,3vw,26px);display:grid;gap:18px;min-width:0}
 .panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .panel-head h2{font-size:22px}
 .panel-head .eyebrow{color:var(--brand-2)}
 .pill{font-size:12px;font-weight:700;padding:5px 10px;border-radius:99px;white-space:nowrap}
 .pill.ok{background:var(--ok-soft);color:var(--ok)}
-.pill.crit{background:var(--crit-soft);color:var(--crit)}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .stat{background:var(--brand-soft);border-radius:12px;padding:12px 14px;min-width:0}
 .stat .label{font-size:12.5px;color:var(--muted)}
 .stat .value{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.2}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px;min-width:460px}
-th{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right;padding:0 8px 10px;border-bottom:1px solid var(--line)}
-th:first-child,td:first-child{text-align:left;padding-left:0}
-td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:right}
-tr:last-child td{border-bottom:0}
-td .name{font-weight:700}
-td .tag{display:inline-block;font-size:11px;font-weight:600;color:var(--muted);background:var(--brand-soft);padding:2px 8px;border-radius:99px;margin-left:6px}
-td.focus .tag{color:var(--brand);background:var(--brand-soft)}
-:root[data-theme="dark"] td.focus .tag{color:var(--brand-2)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) td.focus .tag{color:var(--brand-2)}}
-.chart{display:grid;gap:12px}
-.chart h3{font-size:15px;font-family:var(--body);font-weight:700}
-.row{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
-.row .rname{font-size:13.5px;font-weight:600}
-.bars{display:grid;gap:4px}
-.bar{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
-.bar i{display:block;height:9px;border-radius:99px;min-width:3px}
-.bar.inv i{background:var(--brand)}
-.bar.lead i{background:var(--brand-2)}
-:root[data-theme="dark"] .bar.inv i{background:#7d4bd1}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar.inv i{background:#7d4bd1}}
-.legend{display:flex;gap:16px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
-.legend .inv{background:var(--brand)}
-.legend .lead{background:var(--brand-2)}
+.highlight{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.highlight .badge{flex:none;font-family:var(--display);font-weight:700;font-size:13px;color:var(--on-brand);background:var(--brand);border-radius:10px;padding:6px 10px}
+.highlight h3{font-size:16px}
+.highlight p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.terms-title{font-size:15px;font-family:var(--body);font-weight:700}
+.terms{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.terms li{font-size:13.5px;font-weight:600;color:var(--ink);background:var(--brand-soft);border-radius:99px;padding:6px 12px}
+.terms li::before{content:"\201C"}
+.terms li::after{content:"\201D"}
 .note{font-size:14px;color:var(--muted);margin:0;max-width:62ch}
 .note strong{color:var(--ink)}
-.attention h2{font-size:22px}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.alert{border-radius:14px;padding:16px 18px;display:grid;gap:6px;border:1px solid var(--line);background:var(--surface);min-width:0}
-.alert .sev{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.alert.warn{border-left:4px solid var(--warn)} .alert.warn .sev{color:var(--warn)}
-.alert.crit{border-left:4px solid var(--crit)} .alert.crit .sev{color:var(--crit)}
-.alert h3{font-size:17px}
-.alert p{margin:0;font-size:14px;color:var(--muted)}
-.next{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-.next li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px}
-.check{flex:none;width:20px;height:20px;border:2px solid var(--brand-2);border-radius:6px;margin-top:1px}
 footer{font-size:12.5px;color:var(--muted);text-align:center}
 @media (max-width:860px){.channels{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.cards{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr;gap:6px}}
+@media (max-width:560px){.stats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body style="margin:0">
+
 <div class="wrap">
 
   <header class="hero">
     <div class="hero-top">
       <div>
-        <div class="eyebrow">Relatório de tráfego pago</div>
-        <h1>Blive · Setembro</h1>
+        <div class="eyebrow">Atualização semanal de tráfego pago</div>
+        <h1>Blive · Últimos 7 dias</h1>
       </div>
-      <div class="period">01 a 30 de setembro de 2026 · Meta Ads e Google Ads</div>
+      <div class="period">02 a 08 de outubro de 2026 · Meta Ads e Google Ads</div>
     </div>
+
     <div class="kpis">
-      <div class="kpi"><span class="label">Investimento total</span><span class="value num">R$ 1.840,67</span><span class="sub">Meta + Google</span></div>
-      <div class="kpi"><span class="label">Resultados totais</span><span class="value num">214</span><span class="sub">126 leads + 88 conversões</span></div>
-      <div class="kpi"><span class="label">Leads no Meta</span><span class="value num">126</span><span class="sub">CPL médio R$ 9,05</span></div>
-      <div class="kpi"><span class="label">Conversões no Google</span><span class="value num">88</span><span class="sub">R$ 7,95 por conversão</span></div>
+      <div class="kpi"><span class="label">Investimento total</span><span class="value num">R$ 458,08</span><span class="sub">Meta + Google</span></div>
+      <div class="kpi"><span class="label">Resultados totais</span><span class="value num">40</span><span class="sub">18 leads + 22 conversões</span></div>
+      <div class="kpi"><span class="label">Leads no Meta</span><span class="value num">18</span><span class="sub">R$ 11,67 por lead</span></div>
+      <div class="kpi"><span class="label">Conversões no Google</span><span class="value num">22</span><span class="sub">R$ 11,27 por conversão</span></div>
     </div>
+
     <div class="split">
-      <div class="split-bar" role="img" aria-label="Divisão do investimento: Meta 62%, Google 38%"><span style="width:62%"></span><span style="width:38%"></span></div>
+      <div class="split-bar" role="img" aria-label="Divisão do investimento: Meta 46%, Google 54%"><span style="width:46%"></span><span style="width:54%"></span></div>
       <div class="split-legend">
-        <span><i class="dot" style="background:var(--on-brand)"></i>Meta Ads · R$ 1.140,85 · 62%</span>
-        <span><i class="dot" style="background:var(--brand-2)"></i>Google Ads · R$ 699,82 · 38%</span>
+        <span><i class="dot" style="background:var(--on-brand)"></i>Meta Ads · R$ 210,08 · 46%</span>
+        <span><i class="dot" style="background:var(--brand-2)"></i>Google Ads · R$ 248,00 · 54%</span>
       </div>
     </div>
   </header>
 
   <div class="channels">
+
     <section class="panel">
       <div class="panel-head">
         <div><div class="eyebrow">Canal</div><h2>Meta Ads</h2></div>
-        <span class="pill ok">CPL em queda</span>
+        <span class="pill ok">Campanha do Guia</span>
       </div>
       <div class="stats">
-        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 1.140,85</div></div>
-        <div class="stat"><div class="label">Leads</div><div class="value num">126</div></div>
-        <div class="stat"><div class="label">CPL médio</div><div class="value num">R$ 9,05</div></div>
+        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 210,08</div></div>
+        <div class="stat"><div class="label">Leads</div><div class="value num">18</div></div>
+        <div class="stat"><div class="label">CPL</div><div class="value num">R$ 11,67</div></div>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Campanha</th><th>Investido</th><th>Leads</th><th>CPL</th></tr></thead>
-          <tbody>
-            <tr><td class="focus"><span class="name">Guia</span><span class="tag">Foco do mês</span></td><td class="num">R$ 1.088,00</td><td class="num">106</td><td class="num">R$ 10,27</td></tr>
-            <tr><td><span class="name">Ingresso</span><span class="tag">Residual</span></td><td class="num">R$ 29,00</td><td class="num">10</td><td class="num">R$ 2,90</td></tr>
-            <tr><td><span class="name">Paris</span><span class="tag">Residual</span></td><td class="num">R$ 22,80</td><td class="num">10</td><td class="num">R$ 2,28</td></tr>
-          </tbody>
-        </table>
+      <div class="highlight">
+        <span class="badge">Top 1</span>
+        <div>
+          <h3>Criativo da Thay</h3>
+          <p>Segue como o criativo com melhor desempenho da campanha.</p>
+        </div>
       </div>
-      <div class="chart">
-        <h3>Participação por campanha</h3>
-        <div class="legend"><span><i class="dot inv"></i>% do investimento</span><span><i class="dot lead"></i>% dos leads</span></div>
-        <div class="row"><span class="rname">Guia</span><div class="bars">
-          <div class="bar inv"><i style="width:95.4%"></i><span class="num">95%</span></div>
-          <div class="bar lead"><i style="width:84.1%"></i><span class="num">84%</span></div></div></div>
-        <div class="row"><span class="rname">Ingresso</span><div class="bars">
-          <div class="bar inv"><i style="width:2.5%"></i><span class="num">3%</span></div>
-          <div class="bar lead"><i style="width:7.9%"></i><span class="num">8%</span></div></div></div>
-        <div class="row"><span class="rname">Paris</span><div class="bars">
-          <div class="bar inv"><i style="width:2%"></i><span class="num">2%</span></div>
-          <div class="bar lead"><i style="width:7.9%"></i><span class="num">8%</span></div></div></div>
-      </div>
-      <p class="note">Em setembro o foco foi a <strong>campanha do Guia</strong>. Com a otimização, o custo por lead caiu e a campanha trouxe 106 leads a R$ 10,27 cada. As campanhas de Ingresso e Paris rodaram só com saldo residual e somaram mais 20 leads a custo baixo.</p>
+      <p class="note">Na semana, a campanha do Meta trouxe <strong>18 leads</strong> a R$ 11,67 cada, com o criativo da Thay puxando os resultados.</p>
     </section>
 
     <section class="panel">
       <div class="panel-head">
         <div><div class="eyebrow">Canal</div><h2>Google Ads</h2></div>
-        <span class="pill crit">Sem saldo</span>
+        <span class="pill ok">Buscas assertivas</span>
       </div>
-      <div class="stats" style="grid-template-columns:1fr 1fr">
-        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 699,82</div></div>
-        <div class="stat"><div class="label">Conversões</div><div class="value num">88</div></div>
-        <div class="stat" style="grid-column:1/-1"><div class="label">Custo por conversão</div><div class="value num">R$ 7,95</div></div>
+      <div class="stats">
+        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 248,00</div></div>
+        <div class="stat"><div class="label">Conversões</div><div class="value num">22</div></div>
+        <div class="stat"><div class="label">Custo por conversão</div><div class="value num">R$ 11,27</div></div>
       </div>
-      <p class="note">Os números indicam que as campanhas do Google estão performando muito bem, com o menor custo por resultado entre os canais. A conta está <strong>sem saldo</strong> e precisa de recarga para voltar a veicular.</p>
-      <p class="note">Queremos entender com vocês como essas conversões chegaram do lado de vocês, para cruzar com o que vemos na plataforma.</p>
+      <div>
+        <h3 class="terms-title">O que as pessoas estão pesquisando</h3>
+      </div>
+      <ul class="terms">
+        <li>pacote Disney</li>
+        <li>Orlando</li>
+        <li>viagem Disney</li>
+        <li>agência de turismo Disney</li>
+      </ul>
+      <p class="note">O Google segue indo muito bem. As buscas que geram os cliques são <strong>muito assertivas</strong>: as pessoas procuram exatamente por viagem e pacote para a Disney, o que mostra intenção real de compra.</p>
     </section>
+
   </div>
 
-  <section class="panel attention">
-    <div class="panel-head">
-      <div><div class="eyebrow">Para outubro</div><h2>Pontos de atenção</h2></div>
-    </div>
-    <div class="cards">
-      <div class="alert warn">
-        <span class="sev">Atenção</span>
-        <h3>Novo criativo no Meta</h3>
-        <p>Hoje a campanha depende do criativo que a Thay gravou na viagem. O novo criativo, gravado pela Thay na Disney, já está pronto. Falta só enviar para evitar a saturação e manter o CPL baixo.</p>
-      </div>
-      <div class="alert crit">
-        <span class="sev">Urgente</span>
-        <h3>Saldo do Google Ads</h3>
-        <p>A conta está sem saldo. Enquanto não houver recarga, as campanhas com melhor custo por conversão ficam paradas.</p>
-      </div>
-    </div>
-    <ul class="next">
-      <li><span class="check" aria-hidden="true"></span>Enviar o novo criativo da campanha do Guia, já gravado pela Thay na Disney</li>
-      <li><span class="check" aria-hidden="true"></span>Recarregar o saldo do Google Ads</li>
-      <li><span class="check" aria-hidden="true"></span>Alinhar o retorno das conversões do Google com o time da Blive</li>
-    </ul>
-  </section>
-
-  <footer>Advance Digital · Relatório mensal Blive · Setembro 2026</footer>
+  <footer>Advance Digital · Atualização semanal Blive · Outubro 2026</footer>
 </div>
 </body>
 </html>
