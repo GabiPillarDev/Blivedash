@@ -9,70 +9,169 @@
 <style>
 :root{
   --bg:#f6f4fa; --surface:#ffffff; --ink:#1e1530; --muted:#6b6280; --line:#e4dfee;
-  --brand:#5b2a9e; --brand-deep:#2e1259; --brand-soft:#ece4f8; --brand-2:#a57be0;
+  --brand:#5b2a9e; --brand-deep:#2e1259; --brand-soft:#ece4f8; --brand-2:#a57be0; --brand-3:#d9c7f5;
   --on-brand:#ffffff; --on-brand-muted:#d6c6f2;
+  --meta:#5b2a9e; --google:#b892ee;
   --ok:#157f4a; --ok-soft:#e3f5ea;
   --display:"Bricolage Grotesque", "Manrope", system-ui, sans-serif;
   --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#130d1f; --surface:#1d1530; --ink:#efeaf8; --muted:#a69cbd; --line:#30264a;
-  --brand:#3d1a73; --brand-deep:#28104d; --brand-soft:#2c2048; --brand-2:#b892ee;
+  --brand:#3d1a73; --brand-deep:#28104d; --brand-soft:#2c2048; --brand-2:#b892ee; --brand-3:#4a3570;
   --on-brand:#ffffff; --on-brand-muted:#cbb8ee;
+  --meta:#8a5ae0; --google:#d4b8fa;
   --ok:#6fd49c; --ok-soft:#17321f;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#130d1f; --surface:#1d1530; --ink:#efeaf8; --muted:#a69cbd; --line:#30264a;
-  --brand:#3d1a73; --brand-deep:#28104d; --brand-soft:#2c2048; --brand-2:#b892ee;
+  --brand:#3d1a73; --brand-deep:#28104d; --brand-soft:#2c2048; --brand-2:#b892ee; --brand-3:#4a3570;
   --on-brand:#ffffff; --on-brand-muted:#cbb8ee;
+  --meta:#8a5ae0; --google:#d4b8fa;
   --ok:#6fd49c; --ok-soft:#17321f;
   color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
-.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:20px 48px;display:grid;gap:20px}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:20px 48px;display:grid;gap:20px}
 .num{font-variant-numeric:tabular-nums}
 h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
 .eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-.hero{background:var(--brand);color:var(--on-brand);border-radius:20px;padding:28px clamp(20px,4vw,40px);display:grid;gap:24px}
-.hero-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:var(--brand);color:var(--on-brand);border-radius:22px;padding:30px clamp(20px,4vw,40px);display:grid;gap:26px}
+.hero-art{position:absolute;right:-20px;top:-10px;width:min(460px,55%);height:auto;pointer-events:none;opacity:.9}
+.hero-top{position:relative;display:grid;gap:8px;max-width:560px}
 .hero .eyebrow{color:var(--on-brand-muted)}
-.hero h1{font-size:clamp(30px,5vw,44px);font-weight:700;line-height:1.05;margin-top:6px}
+.hero h1{font-size:clamp(32px,5.4vw,50px);font-weight:700;line-height:1.02}
 .period{font-size:14px;color:var(--on-brand-muted)}
-.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.kpi{background:var(--brand-deep);border-radius:14px;padding:16px 18px;display:grid;gap:4px;min-width:0}
+.lede{font-size:16px;color:var(--on-brand);opacity:.92;margin:4px 0 0;max-width:46ch}
+.kpis{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:var(--brand-deep);border-radius:16px;padding:16px 18px;display:grid;gap:6px;min-width:0}
+.kpi .ico{width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.12);display:grid;place-items:center}
+.kpi .ico svg{width:18px;height:18px;stroke:var(--on-brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .kpi .label{font-size:13px;color:var(--on-brand-muted)}
 .kpi .value{font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:700;line-height:1.1}
 .kpi .sub{font-size:12.5px;color:var(--on-brand-muted)}
-.split{display:grid;gap:8px}
-.split-bar{display:flex;height:10px;border-radius:99px;overflow:hidden;background:var(--brand-deep)}
-.split-bar span:first-child{background:var(--on-brand)}
-.split-bar span:last-child{background:var(--brand-2)}
-.split-legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--on-brand-muted)}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
-.channels{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px clamp(18px,3vw,26px);display:grid;gap:18px;min-width:0}
-.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
-.panel-head h2{font-size:22px}
-.panel-head .eyebrow{color:var(--brand-2)}
+
+/* Cards */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px clamp(18px,3vw,26px);display:grid;gap:16px;min-width:0;align-content:start}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.panel-head h2{font-size:21px}
+.title-ico{display:flex;align-items:center;gap:12px}
+.badge-ico{flex:none;width:42px;height:42px;border-radius:12px;background:var(--brand-soft);display:grid;place-items:center}
+.badge-ico svg{width:22px;height:22px;stroke:var(--brand-2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.eyebrow.soft{color:var(--brand-2)}
 .pill{font-size:12px;font-weight:700;padding:5px 10px;border-radius:99px;white-space:nowrap}
 .pill.ok{background:var(--ok-soft);color:var(--ok)}
+.note{font-size:14px;color:var(--muted);margin:0;max-width:62ch}
+.note strong{color:var(--ink)}
+
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+/* Donut */
+.donut-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.donut{width:150px;height:150px;flex:none}
+.donut .track{stroke:var(--brand-soft)}
+.donut .seg-meta{stroke:var(--meta)}
+.donut .seg-google{stroke:var(--google)}
+.donut .center-big{fill:var(--ink);font-family:var(--display);font-weight:700;font-size:6.2px}
+.donut .center-small{fill:var(--muted);font-family:var(--body);font-size:3.2px}
+.legend-list{display:grid;gap:10px;margin:0;padding:0;list-style:none;min-width:0}
+.legend-list li{display:grid;gap:1px}
+.legend-list .lname{font-size:13px;color:var(--muted)}
+.legend-list .lval{font-family:var(--display);font-weight:700;font-size:18px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.dot.meta{background:var(--meta)} .dot.google{background:var(--google)}
+
+/* Waffle */
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;max-width:280px}
+.waffle span{aspect-ratio:1;border-radius:5px;max-width:100%}
+.waffle .m{background:var(--meta)} .waffle .g{background:var(--google)}
+.wlegend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+
+/* Pace */
+.pace{display:grid;gap:12px}
+.pace-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.pace-row:last-child{border-bottom:0;padding-bottom:0}
+.pace-row span{font-size:13.5px;color:var(--muted)}
+.pace-row b{font-family:var(--display);font-size:20px}
+
+/* Channels */
+.channels{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .stat{background:var(--brand-soft);border-radius:12px;padding:12px 14px;min-width:0}
 .stat .label{font-size:12.5px;color:var(--muted)}
-.stat .value{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.2}
-.highlight{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.highlight .badge{flex:none;font-family:var(--display);font-weight:700;font-size:13px;color:var(--on-brand);background:var(--brand);border-radius:10px;padding:6px 10px}
-.highlight h3{font-size:16px}
-.highlight p{margin:2px 0 0;font-size:14px;color:var(--muted)}
-.terms-title{font-size:15px;font-family:var(--body);font-weight:700}
-.terms{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.terms li{font-size:13.5px;font-weight:600;color:var(--ink);background:var(--brand-soft);border-radius:99px;padding:6px 12px}
-.terms li::before{content:"\201C"}
-.terms li::after{content:"\201D"}
-.note{font-size:14px;color:var(--muted);margin:0;max-width:62ch}
-.note strong{color:var(--ink)}
+.stat .value{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.2}
+.people-title,.search-title{font-size:14px;font-weight:700;margin:0}
+.people{display:flex;flex-wrap:wrap;gap:6px}
+.people svg{width:26px;height:26px}
+.people .head{fill:var(--meta)} .people .body{fill:var(--meta)}
+
+/* Search mock */
+.search{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg)}
+.search-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+.search-bar svg{width:18px;height:18px;flex:none;stroke:var(--brand-2);fill:none;stroke-width:2.2;stroke-linecap:round}
+.search-bar .typed{font-size:15px;font-weight:600;color:var(--ink)}
+.caret{display:inline-block;width:2px;height:18px;background:var(--brand-2);vertical-align:middle;margin-left:2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.caret{animation:none}}
+.suggest{list-style:none;margin:0;padding:6px 0}
+.suggest li{display:flex;align-items:center;gap:12px;padding:9px 16px;font-size:14.5px}
+.suggest li svg{width:16px;height:16px;flex:none;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round}
+.suggest li b{font-weight:700}
+
+/* Cost compare */
+.cost{display:grid;gap:14px}
+.cost-row{display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:center}
+.cost-row .cname{font-size:14px;font-weight:600}
+.cost-row .track{height:16px;border-radius:99px;background:var(--brand-soft);overflow:hidden}
+.cost-row .fill{height:100%;border-radius:99px}
+.cost-row .fill.meta{background:var(--meta)} .cost-row .fill.google{background:var(--google)} .cost-row .fill.avg{background:var(--brand-2);opacity:.55}
+.cost-row .cval{font-family:var(--display);font-weight:700;font-size:17px;min-width:84px;text-align:right}
+.scale{display:grid;grid-template-columns:150px 1fr auto;gap:14px;font-size:11.5px;color:var(--muted)}
+.scale .ticks{display:flex;justify-content:space-between}
+.scale .pad{min-width:84px}
+
+/* Funnel 30d */
+.month{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
+.funnel{display:grid;gap:8px;justify-items:center}
+.step{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--on-brand);border-radius:12px;padding:12px 18px;min-width:0}
+.step .sname{font-size:13.5px;font-weight:600;opacity:.92}
+.step .sval{font-family:var(--display);font-weight:700;font-size:20px}
+.step.s1{width:100%;background:var(--brand-deep)}
+.step.s2{width:86%;background:var(--brand)}
+.step.s3{width:70%;background:#7d4bd1}
+.step.s4{width:54%;background:var(--brand-2);color:#1e1530}
+.rate{font-size:12px;font-weight:600;color:var(--muted)}
+.mgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mcell{border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.mcell .label{font-size:12.5px;color:var(--muted)}
+.mcell .value{font-family:var(--display);font-weight:700;font-size:20px;line-height:1.2}
+@media (max-width:860px){.month{grid-template-columns:1fr}}
+@media (max-width:480px){.step.s2,.step.s3,.step.s4{width:100%}}
+
+/* Google mini funnel + opportunity */
+.gfun{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:8px}
+.gstep{background:var(--brand-soft);border-radius:12px;padding:10px 12px;text-align:center;min-width:0}
+.gstep b{display:block;font-family:var(--display);font-size:20px;line-height:1.2}
+.gstep span{font-size:12px;color:var(--muted)}
+.garrow{display:grid;justify-items:center;font-size:11.5px;font-weight:700;color:var(--brand-2);text-align:center;line-height:1.2}
+.garrow svg{width:18px;height:18px;stroke:var(--brand-2);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.opp{background:var(--brand-soft);border:1px solid var(--line);border-radius:18px;padding:22px clamp(18px,3vw,26px);display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center}
+.opp .badge-ico{background:var(--surface);width:52px;height:52px}
+.opp h2{font-size:20px}
+.opp p{margin:4px 0 0;font-size:14px;color:var(--muted);max-width:62ch}
+.opp p strong{color:var(--ink)}
+.gauge{display:grid;justify-items:center;gap:2px}
+.gauge b{font-family:var(--display);font-size:34px;line-height:1;color:var(--ink)}
+.gauge span{font-size:12px;color:var(--muted);text-align:center;max-width:16ch}
+@media (max-width:620px){.opp{grid-template-columns:1fr}.gfun{grid-template-columns:1fr;}.garrow svg{transform:rotate(90deg)}}
+
 footer{font-size:12.5px;color:var(--muted);text-align:center}
-@media (max-width:860px){.channels{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media (max-width:920px){.trio{grid-template-columns:1fr 1fr}.trio .panel:last-child{grid-column:1/-1}}
+@media (max-width:860px){.channels{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{opacity:.35}}
+@media (max-width:620px){.trio{grid-template-columns:1fr}.cost-row,.scale{grid-template-columns:1fr auto}.cost-row .cname{grid-column:1/-1}.scale .lbl{display:none}}
 @media (max-width:560px){.stats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -81,35 +180,100 @@ footer{font-size:12.5px;color:var(--muted);text-align:center}
 <div class="wrap">
 
   <header class="hero">
+    <svg class="hero-art" viewBox="0 0 460 300" aria-hidden="true">
+      <circle cx="330" cy="150" r="120" fill="#ffffff" fill-opacity=".05"/>
+      <circle cx="330" cy="150" r="80" fill="#ffffff" fill-opacity=".05"/>
+      <path d="M40 250 C 140 240, 220 120, 400 60" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="2.5" stroke-dasharray="2 10" stroke-linecap="round"/>
+      <g transform="translate(400 60) rotate(-28)">
+        <path d="M-22 0 L18 0 C24 0 26 4 22 6 L-6 6 L-16 20 L-22 20 L-16 6 L-26 6 L-30 12 L-34 12 L-31 3 L-34 -6 L-30 -6 L-26 0 Z" fill="#ffffff"/>
+        <path d="M-6 0 L-16 -14 L-22 -14 L-16 0 Z" fill="#ffffff"/>
+      </g>
+      <circle cx="40" cy="250" r="6" fill="#ffffff"/>
+      <circle cx="40" cy="250" r="12" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-width="2"/>
+      <g fill="#ffffff">
+        <path d="M250 40 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill-opacity=".8"/>
+        <path d="M150 90 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill-opacity=".6"/>
+        <path d="M420 190 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5z" fill-opacity=".7"/>
+        <circle cx="330" cy="30" r="2.5" fill-opacity=".7"/>
+        <circle cx="200" cy="200" r="2" fill-opacity=".5"/>
+        <circle cx="380" cy="250" r="3" fill-opacity=".5"/>
+      </g>
+    </svg>
+
     <div class="hero-top">
-      <div>
-        <div class="eyebrow">Atualização semanal de tráfego pago</div>
-        <h1>Blive · Últimos 7 dias</h1>
-      </div>
+      <div class="eyebrow">Atualização semanal de tráfego pago</div>
+      <h1>Blive · Últimos 7 dias</h1>
       <div class="period">02 a 08 de outubro de 2026 · Meta Ads e Google Ads</div>
+      <p class="lede">40 pessoas interessadas em viajar para a Disney chegaram até a Blive nesta semana.</p>
     </div>
 
     <div class="kpis">
-      <div class="kpi"><span class="label">Investimento total</span><span class="value num">R$ 458,08</span><span class="sub">Meta + Google</span></div>
-      <div class="kpi"><span class="label">Resultados totais</span><span class="value num">40</span><span class="sub">18 leads + 22 conversões</span></div>
-      <div class="kpi"><span class="label">Leads no Meta</span><span class="value num">18</span><span class="sub">R$ 11,67 por lead</span></div>
-      <div class="kpi"><span class="label">Conversões no Google</span><span class="value num">22</span><span class="sub">R$ 11,27 por conversão</span></div>
-    </div>
-
-    <div class="split">
-      <div class="split-bar" role="img" aria-label="Divisão do investimento: Meta 46%, Google 54%"><span style="width:46%"></span><span style="width:54%"></span></div>
-      <div class="split-legend">
-        <span><i class="dot" style="background:var(--on-brand)"></i>Meta Ads · R$ 210,08 · 46%</span>
-        <span><i class="dot" style="background:var(--brand-2)"></i>Google Ads · R$ 248,00 · 54%</span>
+      <div class="kpi">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+        <span class="label">Investimento total</span><span class="value num">R$ 457,63</span><span class="sub">Meta + Google</span>
+      </div>
+      <div class="kpi">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span>
+        <span class="label">Resultados totais</span><span class="value num">40</span><span class="sub">18 leads + 22 conversões</span>
+      </div>
+      <div class="kpi">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></span>
+        <span class="label">Leads no Meta</span><span class="value num">18</span><span class="sub">R$ 11,67 por lead</span>
+      </div>
+      <div class="kpi">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></span>
+        <span class="label">Conversões no Google</span><span class="value num">22</span><span class="sub">R$ 11,25 por conversão</span>
       </div>
     </div>
   </header>
+
+  <div class="trio">
+    <section class="panel">
+      <div><div class="eyebrow soft">Distribuição</div><h2>Para onde foi o investimento</h2></div>
+      <div class="donut-wrap">
+        <svg class="donut" viewBox="0 0 42 42" role="img" aria-label="Meta 46 por cento, Google 54 por cento do investimento">
+          <circle class="track" cx="21" cy="21" r="15.915" fill="none" stroke-width="6"/>
+          <circle class="seg-google" cx="21" cy="21" r="15.915" fill="none" stroke-width="6" stroke-dasharray="54.14 45.86" stroke-dashoffset="25"/>
+          <circle class="seg-meta" cx="21" cy="21" r="15.915" fill="none" stroke-width="6" stroke-dasharray="45.86 54.14" stroke-dashoffset="70.86"/>
+          <text class="center-big num" x="21" y="21.5" text-anchor="middle">R$ 458</text>
+          <text class="center-small" x="21" y="26" text-anchor="middle">na semana</text>
+        </svg>
+        <ul class="legend-list">
+          <li><span class="lname"><i class="dot meta"></i>Meta Ads · 46%</span><span class="lval num">R$ 210,08</span></li>
+          <li><span class="lname"><i class="dot google"></i>Google Ads · 54%</span><span class="lval num">R$ 247,55</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div><div class="eyebrow soft">Volume</div><h2>40 resultados na semana</h2></div>
+      <div class="waffle" role="img" aria-label="18 leads do Meta e 22 conversões do Google">
+        <span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span>
+        <span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="g"></span><span class="g"></span>
+        <span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span>
+        <span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span>
+      </div>
+      <div class="wlegend"><span><i class="dot meta"></i>18 leads Meta</span><span><i class="dot google"></i>22 conversões Google</span></div>
+    </section>
+
+    <section class="panel">
+      <div><div class="eyebrow soft">Ritmo</div><h2>Média por dia</h2></div>
+      <div class="pace">
+        <div class="pace-row"><span>Investimento por dia</span><b class="num">R$ 65,38</b></div>
+        <div class="pace-row"><span>Resultados por dia</span><b class="num">5,7</b></div>
+        <div class="pace-row"><span>Custo médio por resultado</span><b class="num">R$ 11,44</b></div>
+      </div>
+    </section>
+  </div>
 
   <div class="channels">
 
     <section class="panel">
       <div class="panel-head">
-        <div><div class="eyebrow">Canal</div><h2>Meta Ads</h2></div>
+        <div class="title-ico">
+          <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M18 6a8 8 0 0 1 0 12"/></svg></span>
+          <div><div class="eyebrow soft">Canal</div><h2>Meta Ads</h2></div>
+        </div>
         <span class="pill ok">Campanha do Guia</span>
       </div>
       <div class="stats">
@@ -117,39 +281,103 @@ footer{font-size:12.5px;color:var(--muted);text-align:center}
         <div class="stat"><div class="label">Leads</div><div class="value num">18</div></div>
         <div class="stat"><div class="label">CPL</div><div class="value num">R$ 11,67</div></div>
       </div>
-      <div class="highlight">
-        <span class="badge">Top 1</span>
-        <div>
-          <h3>Criativo da Thay</h3>
-          <p>Segue como o criativo com melhor desempenho da campanha.</p>
-        </div>
+      <p class="people-title">18 novos contatos interessados no Guia</p>
+      <div class="people" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg>
+        <svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg>
+        <svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg>
       </div>
-      <p class="note">Na semana, a campanha do Meta trouxe <strong>18 leads</strong> a R$ 11,67 cada, com o criativo da Thay puxando os resultados.</p>
+      <p class="note">Na semana, a campanha do Guia trouxe <strong>18 leads</strong> a R$ 11,67 cada, uma média de 2 a 3 novos contatos por dia.</p>
     </section>
 
     <section class="panel">
       <div class="panel-head">
-        <div><div class="eyebrow">Canal</div><h2>Google Ads</h2></div>
+        <div class="title-ico">
+          <span class="badge-ico"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></span>
+          <div><div class="eyebrow soft">Canal</div><h2>Google Ads</h2></div>
+        </div>
         <span class="pill ok">Buscas assertivas</span>
       </div>
       <div class="stats">
-        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 248,00</div></div>
+        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 247,55</div></div>
         <div class="stat"><div class="label">Conversões</div><div class="value num">22</div></div>
-        <div class="stat"><div class="label">Custo por conversão</div><div class="value num">R$ 11,27</div></div>
+        <div class="stat"><div class="label">Custo/conversão</div><div class="value num">R$ 11,25</div></div>
       </div>
-      <div>
-        <h3 class="terms-title">O que as pessoas estão pesquisando</h3>
+      <div class="gfun" role="img" aria-label="784 impressões, 90 cliques, 22 conversões">
+        <div class="gstep"><b class="num">784</b><span>impressões</span></div>
+        <div class="garrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="num">11,5%</span></div>
+        <div class="gstep"><b class="num">90</b><span>cliques</span></div>
+        <div class="garrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="num">24,4%</span></div>
+        <div class="gstep"><b class="num">22</b><span>conversões</span></div>
       </div>
-      <ul class="terms">
-        <li>pacote Disney</li>
-        <li>Orlando</li>
-        <li>viagem Disney</li>
-        <li>agência de turismo Disney</li>
-      </ul>
-      <p class="note">O Google segue indo muito bem. As buscas que geram os cliques são <strong>muito assertivas</strong>: as pessoas procuram exatamente por viagem e pacote para a Disney, o que mostra intenção real de compra.</p>
+      <p class="search-title">O que as pessoas pesquisaram antes de chegar na Blive</p>
+      <div class="search" aria-label="Termos pesquisados">
+        <div class="search-bar"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span class="typed">pacote Disney<span class="caret"></span></span></div>
+        <ul class="suggest">
+          <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>pacote Disney</b></span></li>
+          <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>viagem Disney</b></span></li>
+          <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>agência de turismo Disney</b></span></li>
+          <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>Orlando</b></span></li>
+        </ul>
+      </div>
+      <p class="note">O Google segue indo muito bem. <strong>11,5% de quem vê o anúncio clica</strong>, e 1 em cada 4 cliques vira conversão. As buscas são muito assertivas: as pessoas procuram exatamente por viagem e pacote para a Disney.</p>
     </section>
 
   </div>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div class="title-ico">
+        <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></span>
+        <div><div class="eyebrow soft">Meta Ads · 09/09 a 08/10</div><h2>A jornada da campanha do Guia em 30 dias</h2></div>
+      </div>
+      <span class="pill ok">Orçamento de R$ 30/dia</span>
+    </div>
+    <div class="month">
+      <div class="funnel" role="img" aria-label="Funil: 17.399 impressões, 9.481 pessoas alcançadas, 382 cliques no link, 98 leads">
+        <div class="step s1"><span class="sname">Impressões</span><span class="sval num">17.399</span></div>
+        <span class="rate num">cada pessoa viu cerca de 2 vezes</span>
+        <div class="step s2"><span class="sname">Pessoas alcançadas</span><span class="sval num">9.481</span></div>
+        <span class="rate num">4% clicaram</span>
+        <div class="step s3"><span class="sname">Cliques no link</span><span class="sval num">382</span></div>
+        <span class="rate num">1 em cada 4 virou lead</span>
+        <div class="step s4"><span class="sname">Leads</span><span class="sval num">98</span></div>
+      </div>
+      <div class="mgrid">
+        <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 1.035,26</div></div>
+        <div class="mcell"><div class="label">Custo por lead</div><div class="value num">R$ 10,56</div></div>
+        <div class="mcell"><div class="label">CTR do link</div><div class="value num">2,20%</div></div>
+        <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 2,71</div></div>
+        <div class="mcell"><div class="label">Frequência</div><div class="value num">1,84</div></div>
+        <div class="mcell"><div class="label">Novos seguidores</div><div class="value num">+30</div></div>
+      </div>
+    </div>
+    <p class="note">Em 30 dias, a campanha apareceu para <strong>9.481 pessoas</strong>. A taxa de cliques está saudável e <strong>1 em cada 4 cliques vira lead</strong>. A frequência baixa mostra que o público ainda não está cansado dos anúncios.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow soft">Eficiência</div><h2>Quanto custou cada resultado</h2></div>
+      <span class="pill ok">Canais equilibrados</span>
+    </div>
+    <div class="cost">
+      <div class="cost-row"><span class="cname"><i class="dot meta"></i>Lead no Meta</span><div class="track"><div class="fill meta" style="width:97.25%"></div></div><span class="cval num">R$ 11,67</span></div>
+      <div class="cost-row"><span class="cname"><i class="dot google"></i>Conversão no Google</span><div class="track"><div class="fill google" style="width:93.75%"></div></div><span class="cval num">R$ 11,25</span></div>
+      <div class="cost-row"><span class="cname"><i class="dot" style="background:var(--brand-2);opacity:.55"></i>Média geral</span><div class="track"><div class="fill avg" style="width:95.33%"></div></div><span class="cval num">R$ 11,44</span></div>
+      <div class="scale"><span class="lbl"></span><div class="ticks num"><span>R$ 0</span><span>R$ 3</span><span>R$ 6</span><span>R$ 9</span><span>R$ 12</span></div><span class="pad"></span></div>
+    </div>
+    <p class="note">Os dois canais estão trazendo resultados por volta de <strong>R$ 11 cada</strong>, o que dá segurança para seguir investindo em ambos.</p>
+  </section>
+
+  <section class="opp">
+    <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+    <div>
+      <div class="eyebrow soft">Oportunidade</div>
+      <h2>O Google pode trazer mais resultados</h2>
+      <p>A campanha está <strong>limitada pelo orçamento</strong> de R$ 30 por dia. Na semana, ela deixou de aparecer no topo da busca em <strong>37% das vezes</strong> só por falta de verba. Com mais orçamento, ela alcança mais gente que já está procurando por Disney.</p>
+    </div>
+    <div class="gauge"><b class="num">37%</b><span>das chances de topo perdidas por orçamento</span></div>
+  </section>
 
   <footer>Advance Digital · Atualização semanal Blive · Outubro 2026</footer>
 </div>
