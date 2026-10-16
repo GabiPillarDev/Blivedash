@@ -67,6 +67,8 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 .note strong{color:var(--ink)}
 
 .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.trio .cost-row{grid-template-columns:1fr auto}.trio .cost-row .cname{grid-column:1/-1}
+.trio .cost-row .cval{min-width:0}
 
 /* Donut */
 .donut-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
@@ -167,6 +169,20 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 .gauge span{font-size:12px;color:var(--muted);text-align:center;max-width:16ch}
 @media (max-width:620px){.opp{grid-template-columns:1fr}.gfun{grid-template-columns:1fr;}.garrow svg{transform:rotate(90deg)}}
 
+.seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:700px){.seg{grid-template-columns:1fr 1fr}}
+
+.wow{border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:10px}
+.wow-title{margin:0;font-size:13px;font-weight:700;color:var(--muted)}
+.wow-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wcell{display:grid;gap:2px;min-width:0}
+.wcell .label{font-size:12px;color:var(--muted)}
+.wval{font-family:var(--display);font-weight:700;font-size:16px}
+.wval i{font-style:normal;color:var(--brand-2)}
+.chg{font-size:12px;font-weight:700;justify-self:start;padding:2px 8px;border-radius:99px}
+.chg.up{background:var(--ok-soft);color:var(--ok)}
+@media (max-width:560px){.wow-grid{grid-template-columns:1fr}}
+
 footer{font-size:12.5px;color:var(--muted);text-align:center}
 
 @media (max-width:920px){.trio{grid-template-columns:1fr 1fr}.trio .panel:last-child{grid-column:1/-1}}
@@ -199,116 +215,83 @@ footer{font-size:12.5px;color:var(--muted);text-align:center}
         <circle cx="380" cy="250" r="3" fill-opacity=".5"/>
       </g>
     </svg>
-
     <div class="hero-top">
       <div class="eyebrow">Atualização semanal de tráfego pago</div>
-      <h1>Blive · Últimos 7 dias</h1>
-      <div class="period">02 a 08 de outubro de 2026 · Meta Ads e Google Ads</div>
-      <p class="lede">40 pessoas interessadas em viajar para a Disney chegaram até a Blive nesta semana.</p>
+      <h1>Blive · 09 a 15 de outubro</h1>
+      <div class="period">Google Ads: 09 a 15/10 · Meta Ads: últimos 30 dias (16/09 a 15/10)</div>
+      <p class="lede">Semana recorde no Google: 44 conversões, o dobro da semana anterior, a R$ 4,79 cada.</p>
     </div>
-
     <div class="kpis">
       <div class="kpi">
-        <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span>
-        <span class="label">Investimento total</span><span class="value num">R$ 457,63</span><span class="sub">Meta + Google</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></span>
+        <span class="label">Conversões no Google</span><span class="value num">44</span><span class="sub">o dobro da semana anterior</span>
       </div>
       <div class="kpi">
-        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span>
-        <span class="label">Resultados totais</span><span class="value num">40</span><span class="sub">18 leads + 22 conversões</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+        <span class="label">Custo por conversão</span><span class="value num">R$ 4,79</span><span class="sub">57% mais barato que na semana anterior</span>
       </div>
       <div class="kpi">
         <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></span>
-        <span class="label">Leads no Meta</span><span class="value num">18</span><span class="sub">R$ 11,67 por lead</span>
+        <span class="label">Leads no Meta</span><span class="value num">85</span><span class="sub">últimos 30 dias</span>
       </div>
       <div class="kpi">
-        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></span>
-        <span class="label">Conversões no Google</span><span class="value num">22</span><span class="sub">R$ 11,25 por conversão</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span>
+        <span class="label">Novos seguidores</span><span class="value num">+56</span><span class="sub">últimos 30 dias</span>
       </div>
     </div>
   </header>
 
   <div class="trio">
     <section class="panel">
-      <div><div class="eyebrow soft">Distribuição</div><h2>Para onde foi o investimento</h2></div>
-      <div class="donut-wrap">
-        <svg class="donut" viewBox="0 0 42 42" role="img" aria-label="Meta 46 por cento, Google 54 por cento do investimento">
-          <circle class="track" cx="21" cy="21" r="15.915" fill="none" stroke-width="6"/>
-          <circle class="seg-google" cx="21" cy="21" r="15.915" fill="none" stroke-width="6" stroke-dasharray="54.14 45.86" stroke-dashoffset="25"/>
-          <circle class="seg-meta" cx="21" cy="21" r="15.915" fill="none" stroke-width="6" stroke-dasharray="45.86 54.14" stroke-dashoffset="70.86"/>
-          <text class="center-big num" x="21" y="21.5" text-anchor="middle">R$ 458</text>
-          <text class="center-small" x="21" y="26" text-anchor="middle">na semana</text>
-        </svg>
-        <ul class="legend-list">
-          <li><span class="lname"><i class="dot meta"></i>Meta Ads · 46%</span><span class="lval num">R$ 210,08</span></li>
-          <li><span class="lname"><i class="dot google"></i>Google Ads · 54%</span><span class="lval num">R$ 247,55</span></li>
-        </ul>
-      </div>
+      <div><div class="eyebrow soft">Google · Volume</div><h2>44 conversões na semana</h2></div>
+      <div class="waffle" role="img" aria-label="44 conversões no Google"><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span></div>
+      <div class="wlegend"><span><i class="dot google"></i>cada quadrado é uma conversão</span></div>
     </section>
-
     <section class="panel">
-      <div><div class="eyebrow soft">Volume</div><h2>40 resultados na semana</h2></div>
-      <div class="waffle" role="img" aria-label="18 leads do Meta e 22 conversões do Google">
-        <span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span>
-        <span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="g"></span><span class="g"></span>
-        <span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span>
-        <span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span>
-      </div>
-      <div class="wlegend"><span><i class="dot meta"></i>18 leads Meta</span><span><i class="dot google"></i>22 conversões Google</span></div>
-    </section>
-
-    <section class="panel">
-      <div><div class="eyebrow soft">Ritmo</div><h2>Média por dia</h2></div>
+      <div><div class="eyebrow soft">Google · Ritmo</div><h2>Média por dia</h2></div>
       <div class="pace">
-        <div class="pace-row"><span>Investimento por dia</span><b class="num">R$ 65,38</b></div>
-        <div class="pace-row"><span>Resultados por dia</span><b class="num">5,7</b></div>
-        <div class="pace-row"><span>Custo médio por resultado</span><b class="num">R$ 11,44</b></div>
+        <div class="pace-row"><span>Investimento por dia</span><b class="num">R$ 30,13</b></div>
+        <div class="pace-row"><span>Conversões por dia</span><b class="num">6,3</b></div>
+        <div class="pace-row"><span>Custo por conversão</span><b class="num">R$ 4,79</b></div>
       </div>
+    </section>
+    <section class="panel">
+      <div><div class="eyebrow soft">Instagram · 30 dias</div><h2>+56 seguidores</h2></div>
+      <div class="cost">
+        <div class="cost-row"><span class="cname"><i class="dot meta"></i>Campanha do Guia</span><div class="track"><div class="fill meta" style="width:66%"></div></div><span class="cval num">+37</span></div>
+        <div class="cost-row"><span class="cname"><i class="dot google"></i>Campanha de seguidores</span><div class="track"><div class="fill google" style="width:34%"></div></div><span class="cval num">+19</span></div>
+      </div>
+      <p class="note">A campanha de seguidores começou em outubro e já responde por 1 em cada 3 novos seguidores.</p>
     </section>
   </div>
 
-  <div class="channels">
-
-    <section class="panel">
-      <div class="panel-head">
-        <div class="title-ico">
-          <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M18 6a8 8 0 0 1 0 12"/></svg></span>
-          <div><div class="eyebrow soft">Canal</div><h2>Meta Ads</h2></div>
-        </div>
-        <span class="pill ok">Campanha do Guia</span>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 210,08</div></div>
-        <div class="stat"><div class="label">Leads</div><div class="value num">18</div></div>
-        <div class="stat"><div class="label">CPL</div><div class="value num">R$ 11,67</div></div>
-      </div>
-      <p class="people-title">18 novos contatos interessados no Guia</p>
-      <div class="people" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg>
-        <svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg>
-        <svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg><svg viewBox="0 0 24 24"><circle class="head" cx="12" cy="7" r="4"/><path class="body" d="M4 22c0-5 3.6-8 8-8s8 3 8 8z"/></svg>
-      </div>
-      <p class="note">Na semana, a campanha do Guia trouxe <strong>18 leads</strong> a R$ 11,67 cada, uma média de 2 a 3 novos contatos por dia.</p>
-    </section>
-
-    <section class="panel">
+  <section class="panel">
       <div class="panel-head">
         <div class="title-ico">
           <span class="badge-ico"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></span>
-          <div><div class="eyebrow soft">Canal</div><h2>Google Ads</h2></div>
+          <div><div class="eyebrow soft">09 a 15 de outubro</div><h2>Google Ads</h2></div>
         </div>
-        <span class="pill ok">Buscas assertivas</span>
+        <span class="pill ok">Conversões dobraram</span>
       </div>
       <div class="stats">
-        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 247,55</div></div>
-        <div class="stat"><div class="label">Conversões</div><div class="value num">22</div></div>
-        <div class="stat"><div class="label">Custo/conversão</div><div class="value num">R$ 11,25</div></div>
+        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 210,94</div></div>
+        <div class="stat"><div class="label">Conversões</div><div class="value num">44</div></div>
+        <div class="stat"><div class="label">Custo/conversão</div><div class="value num">R$ 4,79</div></div>
       </div>
-      <div class="gfun" role="img" aria-label="784 impressões, 90 cliques, 22 conversões">
-        <div class="gstep"><b class="num">784</b><span>impressões</span></div>
-        <div class="garrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="num">11,5%</span></div>
-        <div class="gstep"><b class="num">90</b><span>cliques</span></div>
-        <div class="garrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="num">24,4%</span></div>
-        <div class="gstep"><b class="num">22</b><span>conversões</span></div>
+      <div class="wow">
+        <p class="wow-title">Comparado à semana anterior (02 a 08/10)</p>
+        <div class="wow-grid">
+          <div class="wcell"><span class="label">Conversões</span><span class="wval num">22 <i>→</i> 44</span><span class="chg up num">+100%</span></div>
+          <div class="wcell"><span class="label">Custo por conversão</span><span class="wval num">R$ 11,25 <i>→</i> R$ 4,79</span><span class="chg up num">57% mais barato</span></div>
+          <div class="wcell"><span class="label">Taxa de cliques</span><span class="wval num">11,5% <i>→</i> 13,1%</span><span class="chg up num">+1,6 p.p.</span></div>
+        </div>
+      </div>
+      <div class="gfun" role="img" aria-label="765 impressões, 100 cliques, 44 conversões">
+        <div class="gstep"><b class="num">765</b><span>impressões</span></div>
+        <div class="garrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="num">13,1%</span></div>
+        <div class="gstep"><b class="num">100</b><span>cliques</span></div>
+        <div class="garrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="num">44%</span></div>
+        <div class="gstep"><b class="num">44</b><span>conversões</span></div>
       </div>
       <p class="search-title">O que as pessoas pesquisaram antes de chegar na Blive</p>
       <div class="search" aria-label="Termos pesquisados">
@@ -320,53 +303,58 @@ footer{font-size:12.5px;color:var(--muted);text-align:center}
           <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>Orlando</b></span></li>
         </ul>
       </div>
-      <p class="note">O Google segue indo muito bem. <strong>11,5% de quem vê o anúncio clica</strong>, e 1 em cada 4 cliques vira conversão. As buscas são muito assertivas: as pessoas procuram exatamente por viagem e pacote para a Disney.</p>
+      <p class="note">Semana excelente no Google. <strong>Com menos investimento, as conversões dobraram</strong> e o custo por conversão caiu para R$ 4,79. 13,1% de quem vê o anúncio clica e quase metade dos cliques vira conversão. As buscas seguem muito assertivas, com pessoas procurando exatamente por viagem e pacote para a Disney.</p>
     </section>
-
-  </div>
 
   <section class="panel">
     <div class="panel-head">
       <div class="title-ico">
         <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></span>
-        <div><div class="eyebrow soft">Meta Ads · 09/09 a 08/10</div><h2>A jornada da campanha do Guia em 30 dias</h2></div>
+        <div><div class="eyebrow soft">Meta Ads · 16/09 a 15/10</div><h2>A jornada da campanha do Guia em 30 dias</h2></div>
       </div>
       <span class="pill ok">Orçamento de R$ 30/dia</span>
     </div>
     <div class="month">
-      <div class="funnel" role="img" aria-label="Funil: 17.399 impressões, 9.481 pessoas alcançadas, 382 cliques no link, 98 leads">
-        <div class="step s1"><span class="sname">Impressões</span><span class="sval num">17.399</span></div>
+      <div class="funnel" role="img" aria-label="Funil: 16.257 impressões, 8.796 pessoas alcançadas, 339 cliques no link, 85 leads">
+        <div class="step s1"><span class="sname">Impressões</span><span class="sval num">16.257</span></div>
         <span class="rate num">cada pessoa viu cerca de 2 vezes</span>
-        <div class="step s2"><span class="sname">Pessoas alcançadas</span><span class="sval num">9.481</span></div>
+        <div class="step s2"><span class="sname">Pessoas alcançadas</span><span class="sval num">8.796</span></div>
         <span class="rate num">4% clicaram</span>
-        <div class="step s3"><span class="sname">Cliques no link</span><span class="sval num">382</span></div>
+        <div class="step s3"><span class="sname">Cliques no link</span><span class="sval num">339</span></div>
         <span class="rate num">1 em cada 4 virou lead</span>
-        <div class="step s4"><span class="sname">Leads</span><span class="sval num">98</span></div>
+        <div class="step s4"><span class="sname">Leads</span><span class="sval num">85</span></div>
       </div>
       <div class="mgrid">
-        <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 1.035,26</div></div>
-        <div class="mcell"><div class="label">Custo por lead</div><div class="value num">R$ 10,56</div></div>
-        <div class="mcell"><div class="label">CTR do link</div><div class="value num">2,20%</div></div>
-        <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 2,71</div></div>
-        <div class="mcell"><div class="label">Frequência</div><div class="value num">1,84</div></div>
-        <div class="mcell"><div class="label">Novos seguidores</div><div class="value num">+30</div></div>
+        <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 974,41</div></div>
+        <div class="mcell"><div class="label">Custo por lead</div><div class="value num">R$ 11,46</div></div>
+        <div class="mcell"><div class="label">CTR do link</div><div class="value num">2,09%</div></div>
+        <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 2,87</div></div>
+        <div class="mcell"><div class="label">Frequência</div><div class="value num">1,85</div></div>
+        <div class="mcell"><div class="label">Novos seguidores</div><div class="value num">+37</div></div>
       </div>
     </div>
-    <p class="note">Em 30 dias, a campanha apareceu para <strong>9.481 pessoas</strong>. A taxa de cliques está saudável e <strong>1 em cada 4 cliques vira lead</strong>. A frequência baixa mostra que o público ainda não está cansado dos anúncios.</p>
+    <p class="note">Em 30 dias, a campanha apareceu para <strong>8.796 pessoas</strong>. A taxa de cliques está saudável e <strong>1 em cada 4 cliques vira lead</strong>. A frequência baixa mostra que o público ainda não está cansado dos anúncios.</p>
   </section>
 
   <section class="panel">
     <div class="panel-head">
-      <div><div class="eyebrow soft">Eficiência</div><h2>Quanto custou cada resultado</h2></div>
-      <span class="pill ok">Canais equilibrados</span>
+      <div class="title-ico">
+        <span class="badge-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c.8-4 3.6-6 7-6s6.2 2 7 6"/><path d="M19 8v6M16 11h6"/></svg></span>
+        <div><div class="eyebrow soft">Meta Ads · Nova campanha em outubro</div><h2>Campanha de seguidores</h2></div>
+      </div>
+      <span class="pill ok">Visita ao perfil a R$ 0,48</span>
     </div>
-    <div class="cost">
-      <div class="cost-row"><span class="cname"><i class="dot meta"></i>Lead no Meta</span><div class="track"><div class="fill meta" style="width:97.25%"></div></div><span class="cval num">R$ 11,67</span></div>
-      <div class="cost-row"><span class="cname"><i class="dot google"></i>Conversão no Google</span><div class="track"><div class="fill google" style="width:93.75%"></div></div><span class="cval num">R$ 11,25</span></div>
-      <div class="cost-row"><span class="cname"><i class="dot" style="background:var(--brand-2);opacity:.55"></i>Média geral</span><div class="track"><div class="fill avg" style="width:95.33%"></div></div><span class="cval num">R$ 11,44</span></div>
-      <div class="scale"><span class="lbl"></span><div class="ticks num"><span>R$ 0</span><span>R$ 3</span><span>R$ 6</span><span>R$ 9</span><span>R$ 12</span></div><span class="pad"></span></div>
+    <div class="seg">
+      <div class="mcell"><div class="label">Visitas ao perfil</div><div class="value num">211</div></div>
+      <div class="mcell"><div class="label">Custo por visita</div><div class="value num">R$ 0,48</div></div>
+      <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 101,40</div></div>
+      <div class="mcell"><div class="label">Novos seguidores</div><div class="value num">+19</div></div>
+      <div class="mcell"><div class="label">Pessoas alcançadas</div><div class="value num">3.397</div></div>
+      <div class="mcell"><div class="label">Cliques no link</div><div class="value num">241</div></div>
+      <div class="mcell"><div class="label">CTR do link</div><div class="value num">6,00%</div></div>
+      <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 0,42</div></div>
     </div>
-    <p class="note">Os dois canais estão trazendo resultados por volta de <strong>R$ 11 cada</strong>, o que dá segurança para seguir investindo em ambos.</p>
+    <p class="note">A campanha com conteúdos selecionados começou em outubro para <strong>levar mais gente ao perfil da Blive</strong>. Com pouco investimento, já trouxe 211 visitas e 19 novos seguidores. A taxa de cliques de 6% mostra que os conteúdos chamam atenção.</p>
   </section>
 
   <section class="opp">
@@ -374,9 +362,9 @@ footer{font-size:12.5px;color:var(--muted);text-align:center}
     <div>
       <div class="eyebrow soft">Oportunidade</div>
       <h2>O Google pode trazer mais resultados</h2>
-      <p>A campanha está <strong>limitada pelo orçamento</strong> de R$ 30 por dia. Na semana, ela deixou de aparecer no topo da busca em <strong>37% das vezes</strong> só por falta de verba. Com mais orçamento, ela alcança mais gente que já está procurando por Disney.</p>
+      <p>A campanha está <strong>limitada pelo orçamento</strong> de R$ 30 por dia. De 09 a 15/10, ela deixou de aparecer no topo da busca em <strong>29% das vezes</strong> só por falta de verba. Com o custo por conversão em R$ 4,79, cada real a mais tende a trazer mais gente que já está procurando por Disney.</p>
     </div>
-    <div class="gauge"><b class="num">37%</b><span>das chances de topo perdidas por orçamento</span></div>
+    <div class="gauge"><b class="num">29%</b><span>das chances de topo perdidas por orçamento</span></div>
   </section>
 
   <footer>Advance Digital · Atualização semanal Blive · Outubro 2026</footer>
