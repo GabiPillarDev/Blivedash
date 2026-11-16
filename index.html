@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blive · Últimos 7 dias</title>
+<title>Blive · Novembro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
@@ -191,6 +191,12 @@ footer{font-size:12.5px;color:var(--muted);text-align:center}
 @media (max-width:860px){.channels{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{opacity:.35}}
 @media (max-width:620px){.trio{grid-template-columns:1fr}.cost-row,.scale{grid-template-columns:1fr auto}.cost-row .cname{grid-column:1/-1}.scale .lbl{display:none}}
 @media (max-width:560px){.stats{grid-template-columns:1fr 1fr}}
+
+.mcell .value.pending{font-family:var(--body);font-size:15px;font-weight:700;color:var(--muted);font-style:italic}
+.pill.warn{background:#fdf0e1;color:#b45309}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pill.warn{background:#3a2a14;color:#f5b462}}
+:root[data-theme="dark"] .pill.warn{background:#3a2a14;color:#f5b462}
+.dot.black{background:var(--brand-2)}
 </style>
 </head>
 <body style="margin:0">
@@ -218,179 +224,139 @@ footer{font-size:12.5px;color:var(--muted);text-align:center}
       </g>
     </svg>
     <div class="hero-top">
-      <div class="eyebrow">Relatório mensal de tráfego pago</div>
-      <h1>Blive · Outubro</h1>
-      <div class="period">01 a 31 de outubro · Meta Ads e Google Ads · ChatGPT: 22/10 a 04/11</div>
-      <p class="lede">Em outubro, a Blive recebeu 118 conversões no Google, 70 leads do Guia e 3.979 visitas no perfil.</p>
+      <div class="eyebrow">Atualização de tráfego pago</div>
+      <h1>Blive · Novembro</h1>
+      <div class="period">Meta Ads: 06 a 15/11 · ChatGPT: 06 a 16/11</div>
+      <p class="lede">Em 10 dias, a campanha do Guia trouxe 30 leads com o menor custo por lead dos últimos meses: R$ 9,87.</p>
     </div>
     <div class="kpis">
       <div class="kpi">
-        <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span>
-        <span class="label">Investimento total</span><span class="value num">R$ 2.702,11</span><span class="sub">Meta + Google</span>
-      </div>
-      <div class="kpi">
         <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></span>
-        <span class="label">Leads e conversões</span><span class="value num">188</span><span class="sub">70 leads Meta + 118 conversões Google</span>
+        <span class="label">Leads no Meta</span><span class="value num">34</span><span class="sub">30 do Guia + 4 da Black</span>
       </div>
       <div class="kpi">
-        <span class="ico"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
-        <span class="label">Visitas ao perfil</span><span class="value num">3.979</span><span class="sub">R$ 0,22 por visita</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+        <span class="label">Custo por lead do Guia</span><span class="value num">R$ 9,87</span><span class="sub">era R$ 13,00 em outubro</span>
       </div>
       <div class="kpi">
-        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span>
-        <span class="label">Novos seguidores</span><span class="value num">+74</span><span class="sub">Instagram</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+        <span class="label">Investido no Meta</span><span class="value num">R$ 403,26</span><span class="sub">Guia + Black</span>
+      </div>
+      <div class="kpi">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>
+        <span class="label">Cliques no ChatGPT</span><span class="value num">135</span><span class="sub">conversões a confirmar</span>
       </div>
     </div>
   </header>
 
   <div class="trio">
     <section class="panel">
-      <div><div class="eyebrow soft">Google · outubro</div><h2>118 conversões no mês</h2></div>
-      <div class="waffle" style="grid-template-columns:repeat(20,1fr);gap:3px;max-width:320px" role="img" aria-label="118 conversões no Google em outubro"><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span></div>
-      <div class="wlegend"><span><i class="dot google"></i>cada quadrado é uma conversão</span></div>
+      <div><div class="eyebrow soft">Meta · 06 a 15/11</div><h2>34 leads em 10 dias</h2></div>
+      <div class="waffle" role="img" aria-label="30 leads do Guia e 4 leads da Black"><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span></div>
+      <div class="wlegend"><span><i class="dot meta"></i>30 Guia</span><span><i class="dot google"></i>4 Black</span></div>
     </section>
     <section class="panel">
-      <div><div class="eyebrow soft">Google · outubro</div><h2>Média por dia</h2></div>
-      <div class="pace">
-        <div class="pace-row"><span>Investimento por dia</span><b class="num">R$ 29,55</b></div>
-        <div class="pace-row"><span>Conversões por dia</span><b class="num">3,8</b></div>
-        <div class="pace-row"><span>Custo por conversão</span><b class="num">R$ 7,76</b></div>
-      </div>
-    </section>
-    <section class="panel">
-      <div><div class="eyebrow soft">Instagram · outubro</div><h2>+74 seguidores</h2></div>
+      <div><div class="eyebrow soft">Campanha do Guia</div><h2>Custo por lead</h2></div>
       <div class="cost">
-        <div class="cost-row"><span class="cname"><i class="dot meta"></i>Campanha do Guia</span><div class="track"><div class="fill meta" style="width:46%"></div></div><span class="cval num">+34</span></div>
-        <div class="cost-row"><span class="cname"><i class="dot google"></i>Conteúdo e remarketing</span><div class="track"><div class="fill google" style="width:54%"></div></div><span class="cval num">+40</span></div>
+        <div class="cost-row"><span class="cname">Setembro</span><div class="track"><div class="fill avg" style="width:73.4%"></div></div><span class="cval num">R$ 10,27</span></div>
+        <div class="cost-row"><span class="cname">Outubro</span><div class="track"><div class="fill avg" style="width:92.9%"></div></div><span class="cval num">R$ 13,00</span></div>
+        <div class="cost-row"><span class="cname">Novembro</span><div class="track"><div class="fill meta" style="width:70.5%"></div></div><span class="cval num">R$ 9,87</span></div>
       </div>
-      <p class="note">A campanha de conteúdo e remarketing, que começou em outubro, já traz mais da metade dos novos seguidores.</p>
+      <p class="note">O lead do Guia ficou <strong>24% mais barato</strong> que em outubro.</p>
+    </section>
+    <section class="panel">
+      <div><div class="eyebrow soft">Meta · 06 a 15/11</div><h2>Média por dia</h2></div>
+      <div class="pace">
+        <div class="pace-row"><span>Investimento por dia</span><b class="num">R$ 40,33</b></div>
+        <div class="pace-row"><span>Leads por dia</span><b class="num">3,4</b></div>
+        <div class="pace-row"><span>Novos seguidores</span><b class="num">+9</b></div>
+      </div>
     </section>
   </div>
-
-  <section class="panel">
-      <div class="panel-head">
-        <div class="title-ico">
-          <span class="badge-ico"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></span>
-          <div><div class="eyebrow soft">01 a 31 de outubro</div><h2>Google Ads</h2></div>
-        </div>
-        <span class="pill ok">+30 conversões vs setembro</span>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="label">Investido</div><div class="value num">R$ 916,07</div></div>
-        <div class="stat"><div class="label">Conversões</div><div class="value num">118</div></div>
-        <div class="stat"><div class="label">Custo/conversão</div><div class="value num">R$ 7,76</div></div>
-      </div>
-      <div class="wow">
-        <p class="wow-title">Comparado a setembro</p>
-        <div class="wow-grid">
-          <div class="wcell"><span class="label">Conversões</span><span class="wval num">88 <i>→</i> 118</span><span class="chg up num">+34%</span></div>
-          <div class="wcell"><span class="label">Custo por conversão</span><span class="wval num">R$ 7,95 <i>→</i> R$ 7,76</span><span class="chg up num">2% mais barato</span></div>
-          <div class="wcell"><span class="label">Impressões</span><span class="wval num">2.474 <i>→</i> 3.520</span><span class="chg up num">+42%</span></div>
-        </div>
-      </div>
-      <div class="gfun" role="img" aria-label="3.520 impressões, 376 cliques, 118 conversões">
-        <div class="gstep"><b class="num">3.520</b><span>impressões</span></div>
-        <div class="garrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="num">10,7%</span></div>
-        <div class="gstep"><b class="num">376</b><span>cliques</span></div>
-        <div class="garrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="num">31,4%</span></div>
-        <div class="gstep"><b class="num">118</b><span>conversões</span></div>
-      </div>
-      <p class="search-title">O que as pessoas pesquisaram antes de chegar na Blive</p>
-      <div class="search" aria-label="Termos pesquisados">
-        <div class="search-bar"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span class="typed">pacote Disney<span class="caret"></span></span></div>
-        <ul class="suggest">
-          <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>pacote Disney</b></span></li>
-          <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>viagem Disney</b></span></li>
-          <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>agência de turismo Disney</b></span></li>
-          <li><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span><b>Orlando</b></span></li>
-        </ul>
-      </div>
-      <p class="note">Outubro foi o melhor mês do Google até aqui. <strong>118 conversões</strong>, 30 a mais que em setembro, com o custo por conversão ainda mais baixo. 10,7% de quem vê o anúncio clica e quase 1 em cada 3 cliques vira conversão.</p>
-    </section>
-
-  <section class="panel">
-    <div class="panel-head">
-      <div class="title-ico">
-        <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></span>
-        <div><div class="eyebrow soft">22/10 a 04/11</div><h2>Anúncios no ChatGPT</h2></div>
-      </div>
-      <span class="pill ok">Ganhamos R$ 450 em anúncios</span>
-    </div>
-    <div class="seg">
-      <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 404,57</div></div>
-      <div class="mcell"><div class="label">Impressões</div><div class="value num">14.518</div></div>
-      <div class="mcell"><div class="label">Cliques</div><div class="value num">120</div></div>
-      <div class="mcell"><div class="label">Conversões</div><div class="value pending">A confirmar</div></div>
-      <div class="mcell"><div class="label">CTR</div><div class="value num">0,83%</div></div>
-      <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 3,37</div></div>
-      <div class="mcell"><div class="label">CPM</div><div class="value num">R$ 27,87</div></div>
-      <div class="mcell"><div class="label">Bônus em anúncios</div><div class="value num">R$ 450,00</div></div>
-    </div>
-    <p class="note">A Blive começou a anunciar dentro do ChatGPT, aparecendo para quem conversa com a IA. <strong>Ganhamos R$ 450,00 em anúncios</strong> para testar o canal. Em duas semanas, os anúncios apareceram <strong>14.518 vezes</strong> e geraram <strong>120 cliques</strong>. As conversões deste canal ainda estão sendo confirmadas.</p>
-  </section>
 
   <section class="panel">
     <div class="panel-head">
       <div class="title-ico">
         <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></span>
-        <div><div class="eyebrow soft">Meta Ads · outubro</div><h2>A jornada da campanha do Guia em outubro</h2></div>
+        <div><div class="eyebrow soft">Meta Ads · 06 a 15/11</div><h2>A jornada da campanha do Guia</h2></div>
       </div>
-      <span class="pill ok">Orçamento de R$ 30/dia</span>
+      <span class="pill ok">CPL em queda</span>
     </div>
     <div class="month">
-      <div class="funnel" role="img" aria-label="Funil: 16.112 impressões, 8.686 pessoas alcançadas, 315 cliques no link, 70 leads">
-        <div class="step s1"><span class="sname">Impressões</span><span class="sval num">16.112</span></div>
-        <span class="rate num">cada pessoa viu cerca de 2 vezes</span>
-        <div class="step s2"><span class="sname">Pessoas alcançadas</span><span class="sval num">8.686</span></div>
-        <span class="rate num">4% clicaram</span>
-        <div class="step s3"><span class="sname">Cliques no link</span><span class="sval num">315</span></div>
-        <span class="rate num">1 em cada 5 virou lead</span>
-        <div class="step s4"><span class="sname">Leads</span><span class="sval num">70</span></div>
+      <div class="funnel" role="img" aria-label="Funil: 3.822 impressões, 2.570 pessoas alcançadas, 91 cliques no link, 30 leads">
+        <div class="step s1"><span class="sname">Impressões</span><span class="sval num">3.822</span></div>
+        <span class="rate num">cada pessoa viu cerca de 1,5 vez</span>
+        <div class="step s2"><span class="sname">Pessoas alcançadas</span><span class="sval num">2.570</span></div>
+        <span class="rate num">3,5% clicaram</span>
+        <div class="step s3"><span class="sname">Cliques no link</span><span class="sval num">91</span></div>
+        <span class="rate num">1 em cada 3 virou lead</span>
+        <div class="step s4"><span class="sname">Leads</span><span class="sval num">30</span></div>
       </div>
       <div class="mgrid">
-        <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 909,77</div></div>
-        <div class="mcell"><div class="label">Custo por lead</div><div class="value num">R$ 13,00</div></div>
-        <div class="mcell"><div class="label">CTR do link</div><div class="value num">1,96%</div></div>
-        <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 2,89</div></div>
-        <div class="mcell"><div class="label">Frequência</div><div class="value num">1,85</div></div>
-        <div class="mcell"><div class="label">Novos seguidores</div><div class="value num">+34</div></div>
+        <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 296,00</div></div>
+        <div class="mcell"><div class="label">Custo por lead</div><div class="value num">R$ 9,87</div></div>
+        <div class="mcell"><div class="label">CTR do link</div><div class="value num">2,38%</div></div>
+        <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 3,25</div></div>
+        <div class="mcell"><div class="label">Frequência</div><div class="value num">1,49</div></div>
+        <div class="mcell"><div class="label">Novos seguidores</div><div class="value num">+9</div></div>
       </div>
     </div>
-    <p class="note">Em outubro, a campanha apareceu para <strong>8.686 pessoas</strong> e gerou <strong>70 leads</strong>. A taxa de cliques segue saudável e 1 em cada 5 cliques vira lead. A frequência baixa mostra que o público ainda não está cansado dos anúncios.</p>
+    <p class="note">Em 10 dias, a campanha do Guia apareceu para <strong>2.570 pessoas</strong> e gerou <strong>30 leads</strong>. A taxa de cliques subiu em relação a outubro e agora <strong>1 em cada 3 cliques vira lead</strong>.</p>
   </section>
 
   <section class="panel">
     <div class="panel-head">
       <div class="title-ico">
-        <span class="badge-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c.8-4 3.6-6 7-6s6.2 2 7 6"/><path d="M19 8v6M16 11h6"/></svg></span>
-        <div><div class="eyebrow soft">Meta Ads · outubro</div><h2>Distribuição de conteúdo, remarketing e seguidores</h2></div>
+        <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 21V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
+        <div><div class="eyebrow soft">Meta Ads · 06 a 15/11</div><h2>Campanha da Black Friday</h2></div>
       </div>
-      <span class="pill ok">Visita ao perfil a R$ 0,22</span>
+      <span class="pill ok">4 leads</span>
     </div>
     <div class="seg">
-      <div class="mcell"><div class="label">Visitas ao perfil</div><div class="value num">3.979</div></div>
-      <div class="mcell"><div class="label">Custo por visita</div><div class="value num">R$ 0,22</div></div>
-      <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 876,27</div></div>
-      <div class="mcell"><div class="label">Novos seguidores</div><div class="value num">+40</div></div>
-      <div class="mcell"><div class="label">Pessoas alcançadas</div><div class="value num">61.967</div></div>
-      <div class="mcell"><div class="label">Cliques no link</div><div class="value num">4.117</div></div>
-      <div class="mcell"><div class="label">CTR do link</div><div class="value num">4,90%</div></div>
-      <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 0,21</div></div>
+      <div class="mcell"><div class="label">Leads</div><div class="value num">4</div></div>
+      <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 107,26</div></div>
+      <div class="mcell"><div class="label">Custo por lead</div><div class="value num">R$ 26,82</div></div>
+      <div class="mcell"><div class="label">Pessoas alcançadas</div><div class="value num">751</div></div>
+      <div class="mcell"><div class="label">Impressões</div><div class="value num">1.056</div></div>
+      <div class="mcell"><div class="label">Cliques no link</div><div class="value num">13</div></div>
+      <div class="mcell"><div class="label">CTR do link</div><div class="value num">1,23%</div></div>
+      <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 8,25</div></div>
     </div>
-    <p class="note">Em outubro, essa campanha fez três trabalhos ao mesmo tempo: distribuiu os melhores conteúdos da Blive, impactou de novo quem já conhecia a marca (remarketing) e trouxe novos seguidores. Ela <strong>alcançou 61.967 pessoas</strong> e levou <strong>3.979 visitas ao perfil da Blive</strong>, a apenas R$ 0,22 cada. A taxa de cliques de quase 5% mostra que os conteúdos chamam atenção.</p>
+    <p class="note">A campanha da Black trouxe <strong>4 leads</strong> com R$ 107,26 investidos. O painel do Meta registrou 2, mas 4 contatos chegaram pelo formulário.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div class="title-ico">
+        <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></span>
+        <div><div class="eyebrow soft">06 a 16/11</div><h2>Anúncios no ChatGPT</h2></div>
+      </div>
+      <span class="pill warn">Conversões a confirmar</span>
+    </div>
+    <div class="seg">
+      <div class="mcell"><div class="label">Investido</div><div class="value num">R$ 401,96</div></div>
+      <div class="mcell"><div class="label">Impressões</div><div class="value num">15.357</div></div>
+      <div class="mcell"><div class="label">Cliques</div><div class="value num">135</div></div>
+      <div class="mcell"><div class="label">Conversões</div><div class="value pending">A confirmar</div></div>
+      <div class="mcell"><div class="label">CTR</div><div class="value num">0,88%</div></div>
+      <div class="mcell"><div class="label">Custo por clique</div><div class="value num">R$ 2,98</div></div>
+      <div class="mcell"><div class="label">CPM</div><div class="value num">R$ 26,17</div></div>
+      <div class="mcell"><div class="label">Orçamento</div><div class="value num">R$ 40/dia</div></div>
+    </div>
+    <p class="note">Os anúncios no ChatGPT apareceram <strong>15.357 vezes</strong> e geraram <strong>135 cliques</strong>. A plataforma ainda não marcou nenhuma conversão, então esse número segue a confirmar.</p>
   </section>
 
   <section class="opp">
-    <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+    <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l3 3"/><path d="M16 3h5v5"/></svg></span>
     <div>
-      <div class="eyebrow soft">Atenção e oportunidade</div>
-      <h2>O saldo do Google acabou</h2>
-      <p>O canal com o melhor custo por conversão está <strong>sem saldo</strong> e precisa de recarga para os anúncios continuarem no ar. A campanha também segue <strong>limitada pelo orçamento</strong> de R$ 30 por dia. O próprio Google estima cerca de <strong>15% mais conversões</strong> com um ajuste de orçamento.</p>
+      <div class="eyebrow soft">Proposta para vocês</div>
+      <h2>Voltar com o Google no lugar do ChatGPT?</h2>
+      <p>O ChatGPT está gerando cliques, mas ainda não registra conversões. Em outubro, o Google trouxe <strong>118 conversões a R$ 7,76 cada</strong>, com pessoas buscando exatamente por viagem e pacote para a Disney. Nossa sugestão é direcionar a verba do ChatGPT de volta para o Google. Podemos seguir assim?</p>
     </div>
-    <div class="gauge"><b class="num">+15%</b><span>de conversões estimadas pelo Google</span></div>
+    <div class="gauge"><b class="num">R$ 7,76</b><span>por conversão no Google em outubro</span></div>
   </section>
 
-  <footer>Advance Digital · Relatório mensal Blive · Outubro 2026</footer>
+  <footer>Advance Digital · Atualização Blive · Novembro 2026</footer>
 </div>
 </body>
 </html>
